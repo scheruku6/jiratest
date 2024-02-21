@@ -13,5 +13,6 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
 		<foreach doc:name="For Each" doc:id="7754710a-f200-460a-9356-534b3da85500" collection="#[payload.Employees]">
 			<logger level="INFO" doc:name="Logger" doc:id="6187467a-5a3f-4af5-aee5-5ca9795b680a" message="within for each #[payload]"/>
 		</foreach>
+		<logger level="INFO" doc:name="Logger" doc:id="7736fba2-3af4-457a-96a7-4dc0a2b6165c" message="final payload #[payload]"/>
 	</flow>
 </mule>
