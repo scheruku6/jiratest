@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="de8eb930-088f-4cc9-a77a-1a18c7ec5ca0" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="for-each-sampleFlow" doc:id="38d37073-5d31-404b-8df2-7f94d4528f75" >
+		<http:listener doc:name="Listener" doc:id="c13113bb-ac55-4947-8ce8-2b880bc9c9a3" config-ref="HTTP_Listener_config" path="foreach"/>
+		<logger level="INFO" doc:name="Logger" doc:id="7736fba2-3af4-457a-96a7-4dc0a2b6165c" message="received payload #[payload]"/>
+		<foreach doc:name="For Each" doc:id="7754710a-f200-460a-9356-534b3da85500" collection="#[payload.Employees]">
+			<logger level="INFO" doc:name="Logger" doc:id="6187467a-5a3f-4af5-aee5-5ca9795b680a" message="within for each #[payload]"/>
+		</foreach>
+	</flow>
+</mule>
